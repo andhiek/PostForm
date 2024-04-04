@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+<h1>{{title}}</h1>
+<p>{{title}}</p>
+{% endblock header %}
+
+
+
+
+{% block sections %}
+<div class="container">
+  <li>
+    <a href="{% url 'blog:create' %}">Tambah postingan</a>
+  </li>
+  <ul class="nav">
+
+    {% for listcategory in categories %}
+
+    <li class="nav-link">
+      <a href="{% url 'blog:category' categoryInput=listcategory.category %}">{{listcategory.category}}</a>
+    </li>
+    {% endfor %}
+
+  </ul>
+</div>
+{% endblock sections %}
+
+
+
+{% block content %}
+
+<div class="container">
+  {% for Post in post %}
+
+  <h1>{{Post.judul}}</h1>
+  <a href="{% url 'blog:detail' slugInput=Post.slug %}">{{Post.isi}}</a>
+  <p>{{Post.category}}</p>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}

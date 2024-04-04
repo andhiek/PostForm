@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+<h1>{{title}}</h1>
+<p>{{title}}</p>
+{% endblock header %}
+
+
+{% block content %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'contact:create' %}">Tambah Contact</a>
+  </li>
+</ul>
+
+
+<div class="container">
+  <form action="">
+    {% for contact in contact %}
+
+
+    <table class="table">
+      <h3>{{contact.nama}}</h3>
+      <h3> {{contact.email}}</h3>
+      <h3> {{contact.alamat}}</h3>
+
+    </table>
+    {% endfor %}
+  </form>
+</div>
+
+
+
+
+{% endblock content %}
